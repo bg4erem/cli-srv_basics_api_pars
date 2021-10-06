@@ -10,7 +10,8 @@ url = f"https://api.github.com/users/{username}/repos"
 
 response = requests.get(url)
 pprint(response.json())
-print(response.json(), file=file)
+# print(response.json(), file=file)
+file.write(str(response.json()))
 print(f'This JSON content saved to {file.name}')
 
 file.close()
