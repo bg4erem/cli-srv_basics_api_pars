@@ -9,7 +9,7 @@ from itemloaders.processors import TakeFirst, MapCompose, Join, Compose
 class LmerlinSpider(scrapy.Spider):
     name = 'lmerlin'
     allowed_domains = ['leroymerlin.ru']
-    start_urls = ['https://leroymerlin.ru/catalogue/snegouborochnye-mashiny/']
+    start_urls = ['https://leroymerlin.ru/catalogue/parniki-dlya-rassady/']
 
     def parse(self, response:HtmlResponse):
         products = response.xpath('//div[@class="phytpj4_plp largeCard"]/a/@href')
@@ -26,6 +26,7 @@ class LmerlinSpider(scrapy.Spider):
         item.add_value('link', response.url)
         item.add_xpath('price', "//span[@slot='price']/text()")
         item.add_xpath('photos', "//img[@alt='product image']/@src")
+        item.add_xpath('specs', '//dl')
         return item.load_item()
         print()
         pass

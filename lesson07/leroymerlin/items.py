@@ -13,4 +13,6 @@ class LeroymerlinItem(scrapy.Item):
     photos = scrapy.Field()
     link = scrapy.Field(output_processor=TakeFirst())
     price = scrapy.Field(input_processor=Compose(), output_processor=TakeFirst())
+    _id = scrapy.Field()
+    specs = scrapy.Field()
     pass
